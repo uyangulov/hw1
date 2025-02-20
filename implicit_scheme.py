@@ -52,6 +52,6 @@ def solve(psi0, x, V0, h, xv, Nt, dt):
 
     for i in tqdm(range(Nt), desc="Solving time evolution"):
         psi = time_step(psi, ab)
-        history[i+1] = psi
+        history[i+1] = psi / np.sqrt(np.sum(np.abs(psi**2)) * dx)
 
     return history
